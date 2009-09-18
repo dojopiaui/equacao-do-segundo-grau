@@ -1,0 +1,31 @@
+class Equacao
+
+  def initialize(a,b,c)
+    begin
+       @a = a.to_f
+       @b = b.to_f
+       @c = c.to_f
+    rescue e
+      raise e.to_s
+    end
+  end
+
+  def valido?
+    @a != 0 && delta >= 0
+  end
+
+  def delta
+    @b**2 - (4 * @a * @c)  
+  end  
+  
+  def raizes
+    raise "Valores Invalidos" unless valido?
+    x = []
+    x << (-@b + Math.sqrt(delta))/2*@a
+    if delta > 0.0
+      x << (-@b - Math.sqrt(delta))/2*@a
+    end
+    x
+  end
+
+end
